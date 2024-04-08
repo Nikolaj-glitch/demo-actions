@@ -1,0 +1,26 @@
+name: "prova pipeline"
+
+on:
+    push:
+      # Sequence of patterns matched against refs/heads
+      #Quando fai il push verranno eseguiti i jobs
+      branches:    
+        - master
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Pull della repository
+          uses: actions/checkout@v4 #uses permette di fare il pull
+
+        - name: Setup di node 
+          uses: actions/setup-node@v4
+        
+        - name: Installazione di node 
+          run: npm install 
+        
+        - name: Artifact 
+          uses:  actions/upload-artifact@v4
+
+          
